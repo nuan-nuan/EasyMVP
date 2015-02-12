@@ -1,4 +1,4 @@
-package com.github.jorgecastilloprz.easymvp.mvp.interactors;
+package com.github.jorgecastilloprz.easymvp.domain.interactors;
 
 import android.graphics.Bitmap;
 

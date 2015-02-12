@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.jorgecastilloprz.easymvp.mvp.interactors;
+package com.github.jorgecastilloprz.easymvp.domain.interactors;
 
 import android.content.Context;
 import android.graphics.Bitmap;

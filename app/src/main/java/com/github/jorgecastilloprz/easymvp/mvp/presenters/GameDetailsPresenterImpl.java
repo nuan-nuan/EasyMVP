@@ -18,8 +18,8 @@ package com.github.jorgecastilloprz.easymvp.mvp.presenters;
 import android.graphics.Bitmap;
 import android.os.Build;
 
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.GenerateInterfaceColorsInteractor;
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.MarkGameAsFavouriteInteractor;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.GenerateInterfaceColorsInteractor;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.MarkGameAsFavouriteInteractor;
 import com.github.jorgecastilloprz.easymvp.mvp.model.Game;
 import com.github.jorgecastilloprz.easymvp.mvp.model.InterfaceColors;
 

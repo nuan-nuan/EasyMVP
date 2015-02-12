@@ -13,75 +13,72 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.jorgecastilloprz.easymvp.mvp.interactors;
+package com.github.jorgecastilloprz.easymvp.domain.interactors;
 
-import com.github.jorgecastilloprz.easymvp.domain.repository.GameRepository;
-import com.github.jorgecastilloprz.easymvp.domain.repository.exceptions.ObtainGamesException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import com.github.jorgecastilloprz.easymvp.executor.InteractorExecutor;
 import com.github.jorgecastilloprz.easymvp.executor.MainThread;
-import com.github.jorgecastilloprz.easymvp.mvp.model.Game;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 /**
- * Use case designed to obtain a page of games from the repository by a given page number. It notifies 
- * the results to the presenter using a MainThread implementation.
+ * Connection status use case interactor. Uses injected Android ConnectivityManager to get the
+ * info and reports it to the presenter using an injected MainThread implementation.
  *
  * @author Jorge Castillo Pérez
  */
-public class GetGamesByPageInteractorImpl implements GetGamesByPageInteractor {
-    
+public class CheckConnectionInteractorImpl implements CheckConnectionInteractor {
+
     private InteractorExecutor executor;
+    private ConnectivityManager connectivityManager;
     private MainThread mainThread;
-    private GameRepository gameRepository;
-    
-    private int pageNumber;
+
     private Callback callback;
     
     @Inject
-    GetGamesByPageInteractorImpl(InteractorExecutor executor, MainThread mainThread, GameRepository gameRepository) {
+    CheckConnectionInteractorImpl(InteractorExecutor executor, MainThread mainThread, ConnectivityManager connectivityManager) {
         this.executor = executor;
         this.mainThread = mainThread;
-        this.gameRepository = gameRepository;
+        this.connectivityManager = connectivityManager;
     }
 
     @Override
-    public void execute(int pageNumber, Callback callback) {
+    public void execute(Callback callback) {
         if (callback == null) {
             throw new IllegalArgumentException("Callback must not be null or response would not be able to be notified.");
         }
         this.callback = callback;
-        this.pageNumber = pageNumber;
         executor.run(this);
     }
     
     @Override
     public void run() {
-        try {
-            List<Game> games = gameRepository.obtainGamesByPage(pageNumber);
-            notifyGamesLoaded(games);
-        }
-        catch (ObtainGamesException exception) {
-            notifyPetitionError(exception.getMessage());
+        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+        
+        if (isConnected) {
+            notifyOnConnectionAvaiable();   
+        } else {
+            notifyOnConnectionError();
         }
     }
-    
-    private void notifyGamesLoaded(final List<Game> games) {
+
+    private void notifyOnConnectionAvaiable() {
         mainThread.post(new Runnable() {
             @Override
             public void run() {
-                callback.onGamePageLoaded(games);
+                callback.onConnectionAvaiable();     
             }
         });
     }
 
-    private void notifyPetitionError(final String message) {
+    private void notifyOnConnectionError() {
         mainThread.post(new Runnable() {
             @Override
             public void run() {
-                callback.onGettingGamesError(message);
+                callback.onConnectionError();
             }
         });
     }
