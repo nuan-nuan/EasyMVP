@@ -13,27 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.jorgecastilloprz.easymvp.mvp.interactors;
+package com.github.jorgecastilloprz.easymvp.domain.interactors;
 
 import com.github.jorgecastilloprz.easymvp.executor.Interactor;
-import com.github.jorgecastilloprz.easymvp.mvp.model.Game;
-
-import java.util.List;
 
 /**
- * This behaviour defines a get games by page generic logic. Interactors are executed by 
- * InteractorExecutor.
+ * Behavior implemented to create network checking interactors
  *
  * @author Jorge Castillo Pérez
  */
-public interface GetGamesByPageInteractor extends Interactor {
-    
-    void execute(int pageNumber, Callback callback);
-    
+public interface CheckConnectionInteractor extends Interactor {
+
+    void execute(Callback callback);
+
     interface Callback {
+
+        void onConnectionAvaiable();
         
-        void onGamePageLoaded(List<Game> games);
-        
-        void onGettingGamesError(String errorMessage);
+        void onConnectionError();
     }
 }

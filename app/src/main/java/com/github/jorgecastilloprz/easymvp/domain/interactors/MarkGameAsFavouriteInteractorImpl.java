@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.jorgecastilloprz.easymvp.mvp.interactors;
+package com.github.jorgecastilloprz.easymvp.domain.interactors;
 
 import com.github.jorgecastilloprz.easymvp.executor.InteractorExecutor;
 import com.github.jorgecastilloprz.easymvp.executor.MainThread;

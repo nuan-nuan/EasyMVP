@@ -15,8 +15,8 @@
  */
 package com.github.jorgecastilloprz.easymvp.mvp.presenters;
 
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.CheckConnectionInteractor;
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.GetGamesByPageInteractor;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.CheckConnectionInteractor;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.GetGamesByPageInteractor;
 import com.github.jorgecastilloprz.easymvp.mvp.model.Game;
 import com.github.jorgecastilloprz.easymvp.mvp.views.LoadingView;
 import com.github.jorgecastilloprz.easymvp.ui.EasyMVPNavigator;

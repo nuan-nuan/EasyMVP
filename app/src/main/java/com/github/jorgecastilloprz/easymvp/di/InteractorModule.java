@@ -15,14 +15,14 @@
  */
 package com.github.jorgecastilloprz.easymvp.di;
 
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.CheckConnectionInteractor;
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.CheckConnectionInteractorImpl;
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.GenerateInterfaceColorsInteractor;
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.GenerateInterfaceColorsInteractorImpl;
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.GetGamesByPageInteractor;
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.GetGamesByPageInteractorImpl;
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.MarkGameAsFavouriteInteractorImpl;
-import com.github.jorgecastilloprz.easymvp.mvp.interactors.MarkGameAsFavouriteInteractor;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.CheckConnectionInteractor;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.CheckConnectionInteractorImpl;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.GenerateInterfaceColorsInteractor;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.GenerateInterfaceColorsInteractorImpl;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.GetGamesByPageInteractor;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.GetGamesByPageInteractorImpl;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.MarkGameAsFavouriteInteractorImpl;
+import com.github.jorgecastilloprz.easymvp.domain.interactors.MarkGameAsFavouriteInteractor;
 
 import dagger.Module;
 import dagger.Provides;
